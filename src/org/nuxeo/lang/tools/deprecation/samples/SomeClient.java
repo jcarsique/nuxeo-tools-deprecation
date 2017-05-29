@@ -14,25 +14,21 @@
  * Contributors:
  *     Stephane Lacoin at Nuxeo (aka matic)
  */
-package org.nuxeo.lang.tools.deprecation.highlight;
+package org.nuxeo.lang.tools.deprecation.samples;
 
-public class MyPrivate implements MyAPI {
+public class SomeClient {
 
-	@Override
-	public void legacy() {
-		throw new UnsupportedOperationException();
-	}
+    SomeAPI api;
 
-	@Override
-	public void forRemoval() {
-		throw new UnsupportedOperationException();
-	}
+    // Legacy usage
+    @SuppressWarnings("deprecation")
+    public void invokeLegacy() {
+        api.legacy();
+    }
 
-	@Override
-	public void wrongDeprecation() {
-		throw new UnsupportedOperationException();
-	}
-
-
+    // Out of date code
+    public void invokeRemoval() {
+        api.forRemoval();
+    }
 
 }

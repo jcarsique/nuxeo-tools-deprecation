@@ -17,33 +17,33 @@
 package org.nuxeo.lang.tools.deprecation;
 
 /**
- * A @DeprecatedFor program element annotated with @ForCodeRemoval is one that programmers
+ * A @DeprecatedFor program element annotated with {@link Reason#CodeRemoval} is one that programmers
  * are requested for usage removal. The annotated element should
- * provide indication about the upgrade path to follow. Any usage of that element
- * will result in a compilation error ``since`` the revision specified.
+ * provide Javadoc indication about the upgrade path to follow. Any usage of that element
+ * will result in a compilation error after a given comparison with the value of "since".
  */
 public @interface DeprecatedFor {
-	/**
-	 * `CodeRemoval`
-	 * : an API being removed in next revisions.
-	 * 
-	 * `CodeLegacy`
-	 * : a maintained API but that should be used only with extreme prudence.
-	 * 
-	 */
-	enum Reason {
-		CodeRemoval,
-		CodeLegacy
-	}
-	
-	/**
-	 * the deprecation reason 
-	 *
-	 */
-	Reason reason();
-	
-	/**
-	 * the revision in which the annotated element became deprecated.
-	 */
-	String since();
+    /**
+    * `CodeRemoval`
+    * : an API being removed in next revisions.
+    *
+    * `CodeLegacy`
+    * : a maintained API but that should be used only with extreme prudence.
+    *
+    */
+    enum Reason {
+        CodeRemoval,
+        CodeLegacy
+    }
+
+    /**
+    * the deprecation reason
+    *
+    */
+    Reason reason();
+
+    /**
+    * the revision in which the annotated element became deprecated.
+    */
+    String since();
 }

@@ -14,22 +14,32 @@
  * Contributors:
  *     Stephane Lacoin at Nuxeo (aka matic)
  */
-package org.nuxeo.lang.tools.deprecation.highlight;
+package org.nuxeo.lang.tools.deprecation.samples;
 
 import org.nuxeo.lang.tools.deprecation.DeprecatedFor;
 import org.nuxeo.lang.tools.deprecation.DeprecatedFor.Reason;
 
-public interface MyAPI {
+public interface SomeAPI {
 
-	@Deprecated
-	@DeprecatedFor(reason=Reason.CodeLegacy, since="7.10")
-	void legacy();
-	
-	@Deprecated
-	@DeprecatedFor(reason=Reason.CodeRemoval, since="7.10")
-	void forRemoval();
-	
-	
-	@Deprecated
-	void wrongDeprecation();
+    // Good practice for code deprecation with no removal
+    @Deprecated
+    @DeprecatedFor(reason=Reason.CodeLegacy, since="7.10")
+    /*
+     * @deprecated Since 7.10. Code is kept for legacy compliance but...
+     */
+    void legacy();
+
+    // Good practice for code removal
+    @Deprecated
+    @DeprecatedFor(reason=Reason.CodeRemoval, since="7.10")
+    /*
+     * @deprecated Since 7.10. Code is going to be removed. Use instead...
+     * @see #newMethod()...
+     */
+    void forRemoval();
+
+
+    // Bad practice
+    @Deprecated
+    void wrongDeprecation();
 }

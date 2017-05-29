@@ -14,8 +14,25 @@
  * Contributors:
  *     Stephane Lacoin at Nuxeo (aka matic)
  */
-/**
- * 
- *
- */
-package org.nuxeo.lang.tools.deprecation.highlight;
+package org.nuxeo.lang.tools.deprecation.samples;
+
+public class SomeImplementation implements SomeAPI {
+
+    @Override
+    @Deprecated
+    public void legacy() {
+    }
+
+    // Wrong usage
+    @Override
+    public void forRemoval() {
+    }
+
+    // N/A: Wrong API
+    @Override
+    public void wrongDeprecation() {
+        throw new UnsupportedOperationException();
+    }
+
+
+}
